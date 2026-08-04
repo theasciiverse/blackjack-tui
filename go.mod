@@ -1,4 +1,4 @@
-module go-blackjack-tui
+module blackjack-tui
 
 go 1.25.0
 
