@@ -43,3 +43,5 @@ Once the game is running, simply use your keyboard to navigate through the menus
 @rivo [Unicode Handling](https://github.com/rivo/uniseg)
 
 @charmbracelet [TUI framework](https://github.com/charmbracelet/bubbletea)
+
+@dkorunic [Struct Field Alignment](https://github.com/dkorunic/betteralign)
