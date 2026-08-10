@@ -26,13 +26,13 @@ This is a 1v1 blackjack game where you play against the dealer, with hole card a
 1. Make sure you have [Go](https://golang.org/dl/) installed (version ≥ 1.25.0 at best)
 2. Clone this repository:
    ```bash
-   git clone https://github.com/MarcusBilo/go-blackjack-tui
-   cd go-blackjack-tui
+   git clone https://github.com/MarcusBilo/blackjack-tui
+   cd blackjack-tui
    ```
 3. Build and run:
    ```bash
    go build
-   .\go-blackjack-tui
+   .\blackjack-tui
    ```
 
 ## Game Controls
