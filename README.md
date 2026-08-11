@@ -16,7 +16,7 @@ This is a 1v1 blackjack game where you play against the dealer, with hole card a
 
 ## How to Play
 
-### Option 1: Download Pre-built (Windows)
+### Option 1: Download Pre-built (Windows x86-64)
 1. Go to the [Releases](../../releases) page
 2. Download the latest `.zip` file
 3. Extract the contents to a folder of your choice
