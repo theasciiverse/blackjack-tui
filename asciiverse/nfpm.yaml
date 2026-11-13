@@ -1,0 +1,37 @@
+# System packages (.deb, .rpm, .apk, Arch) for blackjack-tui, built by nfpm
+# from the same static binary as the av archive. The release workflow sets
+# VERSION, RELEASE (our packaging release) and ARCH (amd64 or arm64), and
+# puts the binary at stage/blackjack-tui.
+#
+# No .desktop file on purpose: av is the one place titles are started from,
+# so Asciiverse packages never add menu entries (asciiverse/CLAUDE.md).
+name: blackjack-tui
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: games
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/blackjack-tui
+license: BSD-3-Clause
+description: |
+  Blackjack against the dealer in the terminal, with a hole card and late
+  surrender. Choose the blackjack payout (3:2, 7:5 or 6:5), whether the
+  dealer hits soft 17, the number of decks and when to shuffle, then bet,
+  hit, stand, double or surrender. Save your bankroll and carry on later.
+  By MarcusBilo, packaged by Asciiverse.
+contents:
+  - src: stage/blackjack-tui
+    dst: /usr/bin/blackjack-tui
+    file_info: { mode: 0755 }
+  - src: LICENSE
+    dst: /usr/share/doc/blackjack-tui/copyright
+    file_info: { mode: 0644 }
+  - src: PATCHES.md
+    dst: /usr/share/doc/blackjack-tui/PATCHES.md
+    file_info: { mode: 0644 }
+  - src: README.md
+    dst: /usr/share/doc/blackjack-tui/README.md
+    file_info: { mode: 0644 }

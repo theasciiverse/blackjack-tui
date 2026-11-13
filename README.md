@@ -1,3 +1,13 @@
+> **Play it with Asciiverse.** With [av](https://asciiverse.sh), the Asciiverse
+> client:
+>
+> ```
+> av install blackjack-tui
+> av play blackjack-tui
+> ```
+>
+> The original README follows.
+
 ## Deal. Hit. Stand. Repeat.
 
 This is a 1v1 blackjack game where you play against the dealer, with hole card and late surrender rules. It includes all the key mechanics of blackjack, minus splitting and insurance.
