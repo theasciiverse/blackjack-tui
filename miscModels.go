@@ -92,6 +92,7 @@ func (m languageModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, cmd
 
 	case tea.KeyMsg:
+		log.Printf("key %q on the language screen", message.String())
 		model, cmd = keyPressLanguage(m, message)
 		return model, cmd
 
@@ -105,6 +106,10 @@ func (m languageModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	case customFinishMsg:
 		m.languages = message.languages
+		// With a single language there is nothing to choose: go straight on.
+		if len(m.languages) == 1 {
+			return keyPressLanguage(m, tea.KeyMsg{Type: tea.KeyEnter})
+		}
 		return m, nil
 
 	default:

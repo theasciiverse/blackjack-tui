@@ -171,7 +171,13 @@ func (m blackjackModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, cmd
 
 	case tea.KeyMsg:
+		log.Printf("key %q", message.String())
 		model, cmd = keyPressBlackjack(m, message)
+		if bm, ok := model.(blackjackModel); ok {
+			g := bm.Game
+			log.Printf("state phase=%d step=%d cursor=%d money=%d bet=%d player=%d dealer=%d dealt=%d",
+				g.Phase, g.ConfigStep, bm.UiState.Cursor, g.PlayerMoney, g.Bet, g.PlayerTotal, g.DealerTotal, g.CardsDealt)
+		}
 		return model, cmd
 
 	case customHideCursorMsg:
