@@ -5,7 +5,6 @@ import (
 	"fmt"
 	tea "github.com/charmbracelet/bubbletea"
 	"log"
-	"os"
 	"sort"
 )
 
@@ -23,7 +22,7 @@ func (m languageModel) Init() tea.Cmd {
 }
 
 func loadLanguagesFromJSON(filename string) ([]string, error) {
-	file, err := os.Open(filename)
+	file, err := openStrings(filename)
 	if err != nil {
 		log.Printf("failed to open file: %v", err)
 		return nil, fmt.Errorf("failed to open file: %w", err)
@@ -169,7 +168,7 @@ func keyPressLanguage(m languageModel, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 }
 
 func loadUiStrings(language string) (uiText, error) {
-	file, err := os.Open(path)
+	file, err := openStrings(path)
 	if err != nil {
 		log.Println("failed to open " + path)
 		return uiText{}, fmt.Errorf("%w", err)
