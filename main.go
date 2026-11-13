@@ -19,7 +19,7 @@ import (
 func main() {
 	debug.SetGCPercent(10)
 
-	logFile := setupLogging(debugFile)
+	logFile := setupLogging(statePath(debugFile))
 	defer func() {
 		err := logFile.Close()
 		if err != nil {

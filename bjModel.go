@@ -11,7 +11,6 @@ import (
 	"log"
 	"math/rand/v2"
 	"os"
-	"path/filepath"
 	"slices"
 	"strconv"
 	"strings"
@@ -587,14 +586,8 @@ func stand(m blackjackModel, winPayout, loosePayout, drawPayout int) blackjackMo
 }
 
 func saveGameAndQuit(m blackjackModel) blackjackModel {
-	exePath, err := os.Executable()
-	if err != nil {
-		log.Printf("Error getting executable path: %v\n", err)
-		return m
-	}
-	exeDir := filepath.Dir(exePath)
-	saveFilePath := filepath.Join(exeDir, saveFile)
-	file, err := os.OpenFile(saveFilePath, os.O_RDWR|os.O_CREATE, 0777)
+	saveFilePath := statePath(saveFile)
+	file, err := os.OpenFile(saveFilePath, os.O_RDWR|os.O_CREATE, 0o644)
 	if err != nil {
 		log.Printf("Error opening/creating file: %v\n", err)
 		return m
@@ -624,7 +617,7 @@ func saveGameAndQuit(m blackjackModel) blackjackModel {
 	newContent := make([]byte, 0, len([]byte(lineToAdd))+len(existingContent))
 	newContent = append(newContent, []byte(lineToAdd)...)
 	newContent = append(newContent, existingContent...)
-	err = os.WriteFile(saveFilePath, newContent, 0777)
+	err = os.WriteFile(saveFilePath, newContent, 0o644)
 	if err != nil {
 		log.Printf("Error writing to file: %v\n", err)
 		return m
@@ -753,7 +746,7 @@ func calculateMoney(payout uint8, bet, playerMoney uint16, message string, outco
 // ------------------- Supporting Functions -------------------
 
 func loadSaveFile() ([]string, error) {
-	file, err := os.Open(saveFile)
+	file, err := os.Open(statePath(saveFile))
 	if err != nil {
 		return nil, fmt.Errorf("error opening %s: %w", saveFile, err)
 	}
